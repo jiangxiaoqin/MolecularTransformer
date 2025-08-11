@@ -59,10 +59,10 @@ def model_opts(parser):
                        are experimental. Options are
                        [rnn|brnn|mean|transformer|cnn].""")
     group.add_argument('-decoder_type', type=str, default='rnn',
-                       choices=['rnn', 'transformer', 'cnn'],
+                       choices=['rnn', 'transformer', 'cnn', 'gpt5'],
                        help="""Type of decoder layer to use. Non-RNN layers
                        are experimental. Options are
-                       [rnn|transformer|cnn].""")
+                       [rnn|transformer|cnn|gpt5].""")
 
     group.add_argument('-layers', type=int, default=-1,
                        help='Number of layers in enc/dec.')

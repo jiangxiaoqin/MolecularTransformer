@@ -19,6 +19,7 @@ from onmt.encoders.image_encoder import ImageEncoder
 from onmt.decoders.decoder import InputFeedRNNDecoder, StdRNNDecoder
 from onmt.decoders.transformer import TransformerDecoder
 from onmt.decoders.cnn_decoder import CNNDecoder
+from onmt.decoders.gpt5_decoder import GPT5Decoder
 
 from onmt.modules import Embeddings, CopyGenerator
 from onmt.utils.misc import use_gpu
@@ -97,6 +98,11 @@ def build_decoder(opt, embeddings):
                                   opt.global_attention, opt.copy_attn,
                                   opt.self_attn_type,
                                   opt.dropout, embeddings)
+    elif opt.decoder_type == "gpt5":
+        return GPT5Decoder(opt.dec_layers, opt.dec_rnn_size,
+                           opt.heads, opt.transformer_ff,
+                           opt.self_attn_type,
+                           opt.dropout, embeddings)
     elif opt.decoder_type == "cnn":
         return CNNDecoder(opt.dec_layers, opt.dec_rnn_size,
                           opt.global_attention, opt.copy_attn,
